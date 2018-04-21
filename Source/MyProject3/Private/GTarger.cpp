@@ -27,7 +27,7 @@ void AGTarger::Tick(float DeltaTime)
 
 void AGTarger::SetIsSquare(const bool isSquare)
 {
-	bIsSquare = true;
+	bIsSquare = isSquare;
 }
 
 void AGTarger::SetColor(const FColor & _color)
