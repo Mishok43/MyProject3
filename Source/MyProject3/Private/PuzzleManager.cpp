@@ -21,6 +21,8 @@ void APuzzleManager::Finish()
 	DisableInput(GetWorld()->GetFirstPlayerController());
 
 	TextWidget->RemoveFromParent();
+
+	FinishImplementable();
 }
 
 

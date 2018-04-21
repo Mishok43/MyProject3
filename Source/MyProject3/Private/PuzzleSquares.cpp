@@ -52,16 +52,6 @@ void APuzzleSquares::GenerateSquares()
 
 			Squares.Add(target);
 
-			if (!isWinSquare)
-			{
-				target->SetActorScale3D(FVector(1.0, FMath::RandRange(0.7f, 1.7f), FMath::RandRange(0.7f, 1.7f)));
-			}
-			else
-			{
-				const auto scale = FMath::RandRange(0.7f, 1.7f);
-				target->SetActorScale3D(FVector(1.0, scale, scale));
-			}
-
 
 			const FColor ChosenColor = (isWinSquare) ? WinColor : PossibleColors[FMath::RandRange(0, PossibleColors.Num() - 1)];
 			target->SetColor(ChosenColor);
@@ -71,6 +61,34 @@ void APuzzleSquares::GenerateSquares()
 			auto* staticMeshComp = Cast<UStaticMeshComponent>(target->GetComponentByClass(UStaticMeshComponent::StaticClass()));
 			UMaterialInstanceDynamic* materialInstance = staticMeshComp->CreateDynamicMaterialInstance(0, staticMeshComp->GetMaterial(0));
 			materialInstance->SetVectorParameterValue("Color", ChosenColor.ReinterpretAsLinear());
+
+			if (!isWinSquare)
+			{
+
+				auto width = FMath::RandRange(0.7f, 1.7f);
+				auto height = FMath::RandRange(0.7f, 1.7f);
+				
+				if (ChosenColor == WinColor && abs(width - height) < 0.15)
+				{
+					if (width > height)
+					{
+						width += 0.07;
+						height -= 0.08;
+					}
+					else
+					{
+						width -= 0.08;
+						height += 0.07;
+					}
+				}
+
+				target->SetActorScale3D(FVector(1.0, width, height));
+			}
+			else
+			{
+				const auto scale = FMath::RandRange(0.7f, 1.7f);
+				target->SetActorScale3D(FVector(1.0, scale, scale));
+			}
 		}
 	}
 }

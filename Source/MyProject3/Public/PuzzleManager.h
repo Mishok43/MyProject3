@@ -22,13 +22,17 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void Finish();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void FinishImplementable();
+
 protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UUserWidget> TextWidgetClass;
 
 	UUserWidget* TextWidget;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	float TimeLimitation;
+
 	virtual void BeginPlay() override;
-
-
 };
