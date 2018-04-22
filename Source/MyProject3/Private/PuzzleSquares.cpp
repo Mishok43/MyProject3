@@ -68,7 +68,7 @@ void APuzzleSquares::GenerateSquares()
 				auto width = FMath::RandRange(0.7f, 1.7f);
 				auto height = FMath::RandRange(0.7f, 1.7f);
 				
-				if (ChosenColor == WinColor && abs(width - height) < 0.15)
+				if (ChosenColor == WinColor && FMath::Abs(width - height) < 0.15)
 				{
 					if (width > height)
 					{
