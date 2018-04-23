@@ -6,10 +6,12 @@
 
 AMyProject3GameMode::AMyProject3GameMode()
 {
-	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/SideScrollerCPP/Blueprints/SideScrollerCharacter"));
-	if (PlayerPawnBPClass.Class != NULL)
-	{
-		DefaultPawnClass = PlayerPawnBPClass.Class;
-	}
+	int a = 10;
+
+	APawn;
+}
+
+void AMyProject3GameMode::BeginPlay()
+{
+	int a = 10;
 }

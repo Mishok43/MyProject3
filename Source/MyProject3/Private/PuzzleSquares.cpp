@@ -16,11 +16,12 @@ void APuzzleSquares::BeginPlay()
 
 void APuzzleSquares::GenerateSquares()
 {
-	AMyGameStateBase* myGameState = Cast<AMyGameStateBase>(UGameplayStatics::GetGameState(this));
+	const FVector GameCenter = FVector(0, -40, 0);
+	const FVector GameSize = FVector(1800, 700, 0);
 
-	const auto gameZoneLeftCorner = (myGameState->GameCenter - myGameState->GameSize / 2.0f);
-	const auto spawnRegionWidth = myGameState->GameSize.X / NumbrHorizontalRegions;
-	const auto spawnRegionHeight = myGameState->GameSize.Y / NumbrVerticalRegions;
+	const auto gameZoneLeftCorner = (GameCenter - GameSize / 2.0f);
+	const auto spawnRegionWidth = GameSize.X / NumbrHorizontalRegions;
+	const auto spawnRegionHeight = GameSize.Y / NumbrVerticalRegions;
 
 	const auto winVRegion = FMath::RandRange(0, NumbrVerticalRegions - 1);
 	const auto winHRegion = FMath::RandRange(0, NumbrHorizontalRegions - 1);

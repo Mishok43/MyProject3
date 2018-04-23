@@ -13,6 +13,10 @@ class AMyProject3GameMode : public AGameModeBase
 
 public:
 	AMyProject3GameMode();
+
+protected:
+	void BeginPlay() override;
+
 };
 
 
